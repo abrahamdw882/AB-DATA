@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+   <style>
+
+body{
+background-color:gray;}
+
+.container {
+    display: flex;
+    flex-direction: row;
+}
+
+.sidebar {
+    width: 20%;
+    background-color: rgba(53, 17, 17, 0.7);
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    transition: 0.5s;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.sidebar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.sidebar li {
+    margin-bottom: 10px;
+}
+.sidebar:hover {
+    background-color: rgba(53, 17, 17, 0.9);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+
+
+.sidebar a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.sidebar a:hover{
+background-color:black;
+color:red;
+
+
+}
+
+
+.main {
+    width: 80%;
+    padding: 20px;
+    margin-left: 20%;
+}
+
+.toggle-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+}
+
+.toggle-btn span {
+    display: block;
+    width: 30px;
+    height: 3px;
+    background-color: #f30a0a;
+    margin-bottom: 5px;
+}
+
+
+.sidebar.active {
+    width: 50px;
+}
+
+.sidebar.active ul {
+    display: none;
+}
+
+.sidebar.active .toggle-btn span {
+    background-color: #fff;
+}
+
+.main.active {
+    margin-left: 50px;
+}
+
+
+.main {
+    flex-grow: 1;
+    padding: 20px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+}
+
+.user-profile img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.snapshots {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.snapshot {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+.snapshot img {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 10px;
+}
+
+.payment-trend {
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.total-sales {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+     margin-bottom: 20px;
+     
+
+}
+
+.total-sales .amount {
+    font-size: 24px;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+
+.top-up-button {
+	background-color: #333;
+	color: #fff;
+	padding: 50px;
+            border: 1px solid #ddd;
+            display: flex;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	display: flex;
+        margin:50px;  
+         margin-left: 150px;  
+    justify-content: center;
+    align-items: center;
+    
+}
+.top-up-button span {
+	font-size: 16px;
+	font-weight: bold;
+	margin-right: 10px;
+}
+
+.top-up-button i {
+	font-size: 18px;
+	margin-right: 2px;
+}
+
+.top-up-button:hover {
+	background-color: #444;
+}
+
+   </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar" id="sidebar">
+            <ul>
+                <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
+                <li><a href="#"><i class="fa fa-phone"></i> Airtime</a></li>
+                <li><a href="#"><i class="fa fa-wifi"></i> Internet Data</a></li>
+                <li><a href="#"><i class="fa fa-exchange"></i> General Transactions</a></li>
+                <li><a href="#"><i class="fa fa-key"></i> Programmatic Keys</a></li>
+                <li><a href="#"><i class="fa fa-file"></i> API Documentation</a></li>
+                <li><a href="#"><i class="fa fa-user"></i> Profile</a></li>
+                <li><a href="#"><i class="fa fa-lock"></i> Change PIN</a></li>
+            </ul>
+            <div class="toggle-btn" onclick="toggleSidebar()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <div class="main">
+            <div class="header">
+                <div class="user-profile">
+                    <img src="user.png" alt="User Profile">
+                    <span>Unknown</span>
+                </div>
+                <h1>Dashboard</h1>
+            </div>
+            <div class="snapshots">
+                <div class="snapshot">
+                   <a href=""> <img src="send-money.png" alt="Send Money"></a>
+                    <span>Send Money</span>
+                </div>
+                <div class="snapshot">
+                   <a href=""> <img src="airtime.png" alt="Airtime"></a>
+                    <span>Airtime</span>
+                </div>
+                <div class="snapshot">
+                 <a href="">   <img src="internet-data.png" alt="Internet Data"></a>
+                    <span>Internet Data</span>
+                </div>
+            </div>
+            <div class="payment-trend">
+                <h2>Your payment trend</h2>
+                <div class="chart">
+                    <!-- i will add chart code here -->
+                </div>
+            </div>
+            <div class="total-sales">
+                <span>Total Sales</span>
+                <span class="amount">15.60</span>
+            </div>
+        </div>
+    </div>
+
+
+<center> <button class="top-up-button">
+        <span>Top Up Wallet</span>
+    </button></center>
+
+
+
+        </div>
+    </div>
+
+    <script>
+
+function toggleSidebar() {
+    document.getElementById('sidebar').classList.toggle('active');
+    document.querySelector('.main').classList.toggle('active');
+}
+    </script>
+</body>
+</html>
